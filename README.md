@@ -1,12 +1,33 @@
-# FishVim 2.0 - Hacker's Vim Choice
-<img width="2322" height="972" alt="image" src="https://github.com/user-attachments/assets/491a21e5-c576-48ee-a054-efc62a8e03b5" />
-By Nicholas Fisher
+<div align="center">
 
-Quick bootstrap docs: [`scripts/bootstrap/README.md`](scripts/bootstrap/README.md)
+<img width="2322" height="972" alt="FishVim 2.0 screenshot" src="https://github.com/user-attachments/assets/491a21e5-c576-48ee-a054-efc62a8e03b5" />
 
-## First-Time Setup (Run This First)
+### The Hacker's Vim Choice
 
-Clone the repo, run one bootstrap script for your OS, then open Neovim.
+![Neovim](https://img.shields.io/badge/Neovim-57A143?style=for-the-badge&logo=neovim&logoColor=white)
+![Lua](https://img.shields.io/badge/Lua-2C2D72?style=for-the-badge&logo=lua&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
+![macOS](https://img.shields.io/badge/macOS-000000?style=for-the-badge&logo=apple&logoColor=white)
+![Shell Script](https://img.shields.io/badge/Shell_Script-121011?style=for-the-badge&logo=gnu-bash&logoColor=white)
+
+---
+
+## 📋 Table of Contents
+
+- [First-Time Setup](#first-time-setup)
+  - [Linux / WSL](#linux--wsl-ubuntu)
+  - [macOS](#macos)
+- [After First Launch](#after-first-launch)
+- [FishVim Identity](#fishvim-identity)
+- [Core Shortcuts](#core-shortcuts)
+- [Leader Command Guide](#leader-space-command-guide)
+- [Troubleshooting](#troubleshooting)
+
+---
+
+## First-Time Setup
+
+Clone the repo, run one bootstrap script for your OS, then open Neovim. Full bootstrap docs: [`scripts/bootstrap/README.md`](scripts/bootstrap/README.md)
 
 ### Linux / WSL (Ubuntu)
 
@@ -29,24 +50,31 @@ unzip config.zip
 mv ~/FishVim2.0/config ~/.config
 nvim
 ```
-What these scripts do:
+
+**What the bootstrap scripts do:**
 - Install system dependencies (`git`, `ripgrep`, `fd`, `node`, `python`, `unzip`, etc.)
-- Copy FishVim config into the Neovim config directory (`~/.config/nvim` or `%LOCALAPPDATA%\nvim`)
+- Copy FishVim config into the Neovim config directory (`~/.config/nvim`)
 - Leave you ready to launch `nvim`
+
+---
 
 ## After First Launch
 
-- Run `:Lazy` and let plugins install/update.
-- Run `:Mason` to check language servers and tools.
-- If anything is missing, run:
+- Run `:Lazy` and let plugins install/update
+- Run `:Mason` to check language servers and tools
+- If anything is missing:
   - `:Lazy sync`
   - `:MasonInstall <tool-name>`
+
+---
 
 ## FishVim Identity
 
 - Shark + FishVim startup dashboard
 - Leader key is `<Space>`
 - Press `<Space>` to see available command groups via which-key
+
+---
 
 ## Core Shortcuts
 
@@ -58,9 +86,14 @@ What these scripts do:
 | `]t` / `[t` | Next/Previous TODO |
 | `]h` / `[h` | Next/Previous git hunk |
 
+---
+
 ## Leader `<Space>` Command Guide
 
-### Files / Search (`<leader>f`)
+<details>
+<summary><b>📁 Files / Search — <code><leader>f</code></b></summary>
+
+<br>
 
 | Key | Action |
 |---|---|
@@ -73,7 +106,12 @@ What these scripts do:
 | `<leader>fp` | Projects picker |
 | `<leader>fk` | Keymaps picker |
 
-### Git / Trouble (`<leader>g`, `<leader>h`, `<leader>x`)
+</details>
+
+<details>
+<summary><b>🔀 Git / Trouble — <code><leader>g</code>, <code><leader>h</code>, <code><leader>x</code></b></summary>
+
+<br>
 
 | Key | Action |
 |---|---|
@@ -95,7 +133,12 @@ What these scripts do:
 | `<leader>xl` | Location list |
 | `<leader>xt` | TODO list |
 
-### LSP / Diagnostics (`<leader>l`)
+</details>
+
+<details>
+<summary><b>🔧 LSP / Diagnostics — <code><leader>l</code></b></summary>
+
+<br>
 
 | Key | Action |
 |---|---|
@@ -106,7 +149,12 @@ What these scripts do:
 | `<leader>ls` | Restart LSP |
 | `<leader>ll` | Lint current buffer |
 
-### Debug (`<leader>d`)
+</details>
+
+<details>
+<summary><b>🐛 Debug — <code><leader>d</code></b></summary>
+
+<br>
 
 | Key | Action |
 |---|---|
@@ -119,7 +167,12 @@ What these scripts do:
 | `<leader>dr` | Open debug REPL |
 | `<leader>du` | Toggle debug UI |
 
-### Tests / TODO (`<leader>t`)
+</details>
+
+<details>
+<summary><b>🧪 Tests / TODO — <code><leader>t</code></b></summary>
+
+<br>
 
 | Key | Action |
 |---|---|
@@ -131,7 +184,12 @@ What these scripts do:
 | `<leader>tS` | Stop tests |
 | `<leader>tt` | TODO Telescope |
 
-### Buffers (`<leader>b`)
+</details>
+
+<details>
+<summary><b>📄 Buffers — <code><leader>b</code></b></summary>
+
+<br>
 
 | Key | Action |
 |---|---|
@@ -142,7 +200,12 @@ What these scripts do:
 | `<leader>bh` | Move buffer left |
 | `<leader>bs` | Sort buffers by extension |
 
-### Windows / Sessions (`<leader>w`, `<leader>s`)
+</details>
+
+<details>
+<summary><b>🪟 Windows / Sessions — <code><leader>w</code>, <code><leader>s</code></b></summary>
+
+<br>
 
 | Key | Action |
 |---|---|
@@ -164,10 +227,14 @@ What these scripts do:
 | `<leader>sx` | Close split |
 | `<leader>sm` | Toggle split maximizer |
 
-Legacy movement aliases:
-- `<leader>a`, `<leader>s`, `<leader>d`, `<leader>q`
+Legacy movement aliases: `<leader>a`, `<leader>s`, `<leader>d`, `<leader>q`
 
-### Explorer (`<leader>e`)
+</details>
+
+<details>
+<summary><b>🗂️ Explorer — <code><leader>e</code></b></summary>
+
+<br>
 
 | Key | Action |
 |---|---|
@@ -176,7 +243,28 @@ Legacy movement aliases:
 | `<leader>ec` | Collapse explorer |
 | `<leader>er` | Refresh explorer |
 
-### UI / Utility
+</details>
+
+<details>
+<summary><b>🎯 Harpoon</b></summary>
+
+<br>
+
+| Key | Action |
+|---|---|
+| `<leader>ha` | Add file |
+| `<leader>hh` | Quick menu |
+| `<leader>h1` | File 1 |
+| `<leader>h2` | File 2 |
+| `<leader>h3` | File 3 |
+| `<leader>h4` | File 4 |
+
+</details>
+
+<details>
+<summary><b>🖥️ UI / Utility</b></summary>
+
+<br>
 
 | Key | Action |
 |---|---|
@@ -189,16 +277,9 @@ Legacy movement aliases:
 | `<leader>-` | Decrement number |
 | `<leader>qq` | Quit all |
 
-### Harpoon
+</details>
 
-| Key | Action |
-|---|---|
-| `<leader>ha` | Add file |
-| `<leader>hh` | Quick menu |
-| `<leader>h1` | File 1 |
-| `<leader>h2` | File 2 |
-| `<leader>h3` | File 3 |
-| `<leader>h4` | File 4 |
+---
 
 ## Troubleshooting
 
@@ -218,8 +299,15 @@ If something breaks after upgrades:
 :checkhealth
 ```
 
-## Notes
+> **Notes:**
+> - First install requires working internet access
+> - Some tool downloads fail in offline/blocked DNS environments
+> - If `stylua` fails in Mason, ensure `unzip` is installed on your system
 
-- First install requires working internet access.
-- Some tool downloads fail in offline/blocked DNS environments.
-- If `stylua` fails in Mason, ensure `unzip` is installed on your system.
+---
+
+## Author
+
+**Nicholas Fisher**
+
+[![GitHub](https://img.shields.io/badge/GitHub-NeptuneCipher42-181717?style=flat&logo=github&logoColor=white)](https://github.com/NeptuneCipher42)
