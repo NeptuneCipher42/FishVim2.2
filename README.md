@@ -23,6 +23,7 @@
 - [Leader Command Guide](#leader-space-command-guide)
 - [Troubleshooting](#troubleshooting)
 
+<div></div>
 ---
 
 ## First-Time Setup
