@@ -31,6 +31,10 @@
 | **Git** | `gitsigns` + `lazygit` + `diffview` + `neogit` + `git-conflict` |
 | **Find/Replace** | `grug-far.nvim` (ripgrep-powered, project-wide) |
 | **Markdown** | `render-markdown.nvim` (headings, tables, checkboxes, callouts) |
+| **HTTP Client** | `kulala.nvim` (REST/GraphQL/gRPC in `.http` files) |
+| **Code Outline** | `aerial.nvim` (LSP+TS symbol sidebar, 60+ languages) |
+| **Rename** | `inc-rename.nvim` (live multi-file LSP rename preview) |
+| **Rust** | `rustaceanvim` (clippy, hover actions, macro expand, runnables) |
 | **Debugging** | `nvim-dap` + `nvim-dap-ui` (Python, Rust/C, JS/TS) |
 | **Testing** | `neotest` (Python, Go, Vitest) |
 | **File Nav** | `telescope` + `harpoon2` + `oil.nvim` + `nvim-tree` |
@@ -220,6 +224,9 @@ Supports: **Claude** (Anthropic), **GPT-4** (OpenAI), **Gemini**, **Ollama** (lo
 | `<leader>ll` | Lint current buffer |
 | `<leader>li` | LSP info |
 | `<leader>lh` | Toggle inlay hints |
+| `<leader>lo` | Code outline toggle (aerial) |
+| `<leader>lO` | Aerial nav float |
+| `<leader>ls` | Symbol search (aerial + telescope) |
 | `gd` | Go to definition |
 | `gR` | LSP references |
 | `gD` | LSP declaration |
@@ -293,6 +300,18 @@ FishVim ships three complementary AI tools covering different workflows:
 | `<leader>du` | Toggle debug UI |
 
 **Supported:** Python (debugpy), Rust/C/C++ (codelldb), JavaScript/TypeScript (js-debug-adapter)
+
+**Rust extras** (`<leader>r` prefix, only in `.rs` files):
+
+| Key | Action |
+|---|---|
+| `<leader>rr` | Rust runnables picker |
+| `<leader>rd` | Rust debuggables picker |
+| `<leader>rt` | Rust testables |
+| `<leader>re` | Explain error at cursor |
+| `<leader>rm` | Expand macro |
+| `<leader>rg` | Crate graph visualization |
+| `<leader>rp` / `<leader>rP` | Move item up / down |
 
 </details>
 

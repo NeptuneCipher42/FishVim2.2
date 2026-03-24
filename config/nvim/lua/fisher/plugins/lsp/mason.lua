@@ -36,7 +36,9 @@ return {
         "gopls",        -- Go
         "lua_ls",
         "pyright",      -- Python
-        "rust_analyzer",-- Rust
+        -- NOTE: rust_analyzer is intentionally omitted here.
+        -- rustaceanvim (rustacean.lua) manages rust-analyzer directly.
+        -- Adding it here would create a conflicting second setup.
         "taplo",        -- TOML
         -- Docs
         "marksman",     -- Markdown (new)

@@ -31,6 +31,8 @@ return {
       { "<leader>cp", desc = "Copilot panel" },
       { "<leader>cP", desc = "Copilot disable" },
       { "<leader>uC", desc = "Toggle Copilot auto-trigger" },
+      { "<leader>R",  group = "HTTP (kulala)" },
+      { "<leader>r",  group = "Rust (rustaceanvim)" },
       { "<leader>sr", desc = "Search & replace (grug-far)" },
       { "<leader>sw", desc = "Search word (grug-far)" },
       { "<leader>gC", desc = "Git conflict list" },

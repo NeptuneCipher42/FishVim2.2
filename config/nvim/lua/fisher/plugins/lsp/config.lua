@@ -57,7 +57,9 @@ return {
         bmap("n",      "gi",         "<cmd>Telescope lsp_implementations<CR>", "LSP implementations")
         bmap("n",      "gt",         "<cmd>Telescope lsp_type_definitions<CR>","LSP type definitions")
         bmap({ "n","v" },"<leader>la", vim.lsp.buf.code_action,               "Code actions")
-        bmap("n",      "<leader>lr", vim.lsp.buf.rename,                      "Rename symbol")
+        -- <leader>lr handled by inc-rename.nvim (live preview rename)
+        -- Fallback if inc-rename is not loaded:
+        bmap("n",      "<leader>lr", vim.lsp.buf.rename,                      "Rename symbol (fallback)")
         bmap("n",      "<leader>ld", vim.diagnostic.open_float,               "Line diagnostics")
         bmap("n",      "<leader>lD", "<cmd>Telescope diagnostics bufnr=0<CR>","Buffer diagnostics")
         bmap("n",      "[d",         vim.diagnostic.goto_prev,                "Prev diagnostic")
