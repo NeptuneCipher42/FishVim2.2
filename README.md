@@ -28,7 +28,9 @@
 | **Syntax** | `nvim-treesitter` + textobjects + 22 parsers |
 | **Formatting** | `conform.nvim` (format-on-save) |
 | **Linting** | `nvim-lint` (async, per-filetype) |
-| **Git** | `gitsigns` + `lazygit` + `diffview` + `neogit` |
+| **Git** | `gitsigns` + `lazygit` + `diffview` + `neogit` + `git-conflict` |
+| **Find/Replace** | `grug-far.nvim` (ripgrep-powered, project-wide) |
+| **Markdown** | `render-markdown.nvim` (headings, tables, checkboxes, callouts) |
 | **Debugging** | `nvim-dap` + `nvim-dap-ui` (Python, Rust/C, JS/TS) |
 | **Testing** | `neotest` (Python, Go, Vitest) |
 | **File Nav** | `telescope` + `harpoon2` + `oil.nvim` + `nvim-tree` |

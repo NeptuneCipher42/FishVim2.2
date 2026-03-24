@@ -25,6 +25,10 @@ return {
       { "<leader>s",  group = "Splits / Swap" },
       -- New groups
       { "<leader>a",  group = "AI (CodeCompanion)" },
+      { "<leader>sr", desc = "Search & replace (grug-far)" },
+      { "<leader>sw", desc = "Search word (grug-far)" },
+      { "<leader>gC", desc = "Git conflict list" },
+      { "<leader>um", desc = "Toggle markdown rendering" },
       { "<leader>gz", desc = "Zen Mode" },
       { "<leader>gB", desc = "Git Browse URL" },
       { "<leader>gd", desc = "Diffview open" },
