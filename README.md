@@ -36,7 +36,9 @@
 | **File Nav** | `telescope` + `harpoon2` + `oil.nvim` + `nvim-tree` |
 | **Motions** | `flash.nvim` (s/S jump) |
 | **Code Folding** | `nvim-ufo` (LSP/Treesitter, peek folds with K) |
-| **AI** | `codecompanion.nvim` (Claude Sonnet, GPT, Ollama) |
+| **AI Chat/Agent** | `codecompanion.nvim` (Claude, GPT, Gemini, Ollama) |
+| **AI Cursor-style** | `avante.nvim` (inline diff + one-click apply, 17k ⭐) |
+| **AI Ghost Text** | `copilot.lua` (GitHub Copilot inline, auto-trigger) |
 | **UI** | `noice` + `snacks.nvim` + `bufferline` + `lualine` |
 | **Theme** | `tokyonight` cyberpunk override (jet-black, neon green) |
 
@@ -232,11 +234,14 @@ Supports: **Claude** (Anthropic), **GPT-4** (OpenAI), **Gemini**, **Ollama** (lo
 </details>
 
 <details>
-<summary><b>🤖 AI Assistant — <code>&lt;leader&gt;a</code></b></summary>
+<summary><b>🤖 AI — <code>&lt;leader&gt;a</code>, <code>&lt;leader&gt;c</code></b></summary>
 
 <br>
 
-> Requires `ANTHROPIC_API_KEY` set in your environment (Claude Sonnet default)
+FishVim ships three complementary AI tools covering different workflows:
+
+**CodeCompanion** — Chat panel, inline edits, agent mode
+> Requires `ANTHROPIC_API_KEY` (Claude Sonnet default). Also supports GPT-4, Gemini, Ollama.
 
 | Key | Action |
 |---|---|
@@ -245,7 +250,29 @@ Supports: **Claude** (Anthropic), **GPT-4** (OpenAI), **Gemini**, **Ollama** (lo
 | `<leader>ac` | AI Inline assistant |
 | `<leader>ae` | Add visual selection to chat |
 
-Supports: Claude, GPT-4, Gemini, Ollama (local). Change adapter in `plugins/codecompanion.lua`.
+**Avante** — Cursor-like sidebar with one-click diff apply (17k ⭐)
+> Also uses `ANTHROPIC_API_KEY`. Requires Rust toolchain for build.
+
+| Key | Action |
+|---|---|
+| `<leader>av` | Toggle Avante sidebar |
+| `<leader>ae` | Ask Avante about selection (visual) |
+| `<leader>aV` | Refresh Avante response |
+| `<leader>af` | Focus Avante window |
+| `co` / `ct` / `cb` | Accept ours/theirs/both (in diff) |
+| `]a` / `[a` | Next/Prev Avante diff hunk |
+
+**Copilot** — Always-on ghost text as you type
+> Requires active **GitHub Copilot subscription**. Run `:Copilot auth` first.
+
+| Key | Action |
+|---|---|
+| `<M-l>` | Accept full suggestion (insert mode) |
+| `<M-w>` | Accept next word |
+| `<M-]>` / `<M-[>` | Next / Prev suggestion |
+| `<C-]>` | Dismiss suggestion |
+| `<leader>uC` | Toggle Copilot auto-trigger |
+| `<leader>cp` | Copilot panel |
 
 </details>
 
