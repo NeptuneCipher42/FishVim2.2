@@ -1,9 +1,13 @@
 -- blink.cmp: next-gen completion engine (replaces nvim-cmp + 5 source plugins)
 -- Rust-based fuzzy matching, 6x faster, typo-resistant, built-in LSP/path/buffer/snippets
+-- colorful-menu.nvim: syntax-highlighted completion items (types, paths, signatures)
 return {
   "saghen/blink.cmp",
-  version = "v0.*",
-  dependencies = { "rafamadriz/friendly-snippets" },
+  version = "*",
+  dependencies = {
+    "rafamadriz/friendly-snippets",
+    "xzbdmw/colorful-menu.nvim",
+  },
   opts = {
     keymap = {
       preset = "default",
@@ -20,7 +24,7 @@ return {
     },
 
     appearance = {
-      use_nvim_web_devicons = true,
+      use_nvim_cmp_as_default = true,
       nerd_font_variant = "mono",
     },
 
@@ -47,6 +51,17 @@ return {
         border = "rounded",
         draw = {
           treesitter = { "lsp" },
+          -- colorful-menu: syntax-highlighted labels (replaces plain label column)
+          components = {
+            label = {
+              text = function(ctx)
+                return require("colorful-menu").blink_components_text(ctx)
+              end,
+              highlight = function(ctx)
+                return require("colorful-menu").blink_components_highlight(ctx)
+              end,
+            },
+          },
           columns = {
             { "kind_icon" },
             { "label", "label_description", gap = 1 },

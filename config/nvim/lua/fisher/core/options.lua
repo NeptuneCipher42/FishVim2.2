@@ -33,6 +33,18 @@ opt.hlsearch   = true
 opt.clipboard:append("unnamedplus")
 opt.completeopt = { "menu", "menuone", "noselect" }
 
+-- Command line completion (wilder.nvim enhances this further)
+opt.wildmenu       = true                    -- enable built-in completion menu
+opt.wildmode       = { "longest:full", "full" } -- first complete longest match, then cycle
+opt.wildoptions    = "pum"                   -- use popup menu (same style as insert completion)
+opt.wildignorecase = true                    -- case-insensitive command completion
+opt.wildignore     = {                       -- skip these in file completion
+  "*.o", "*.obj", "*.pyc", "*.class",
+  ".git", ".hg", ".svn",
+  "node_modules", ".DS_Store",
+  "*.jpg", "*.png", "*.gif", "*.svg",
+}
+
 -- Split behavior
 opt.splitright = true
 opt.splitbelow = true

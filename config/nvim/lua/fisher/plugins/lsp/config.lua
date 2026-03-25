@@ -30,7 +30,9 @@ return {
       severity_sort    = true,
       float            = { border = "rounded", source = true },
       underline        = true,
-      virtual_text     = { spacing = 2, source = "if_many", prefix = "●" },
+      virtual_text     = false,   -- tiny-inline-diagnostic.nvim handles rendering
+      -- Neovim 0.11: show virtual_lines only on current line (less noise)
+      virtual_lines    = { current_line = true },
       signs            = {
         text = {
           [vim.diagnostic.severity.ERROR] = " ",

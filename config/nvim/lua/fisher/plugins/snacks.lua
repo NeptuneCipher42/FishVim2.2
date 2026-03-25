@@ -58,13 +58,28 @@ return {
       win = { style = "zen", width = 120 },
     },
 
+    -- Floating centered terminal
+    terminal = {
+      enabled = true,
+      win = {
+        style    = "terminal",
+        position = "float",
+        border   = "rounded",
+        width    = 0.8,   -- 80% of screen width
+        height   = 0.8,   -- 80% of screen height
+        row      = 0.1,   -- vertically centered
+        col      = 0.1,
+      },
+    },
+
     -- Keep these disabled (using dedicated plugins instead)
     dashboard = { enabled = false },  -- keep alpha-nvim
-    terminal  = { enabled = false },  -- keep toggleterm
     picker    = { enabled = false },  -- keep telescope
     explorer  = { enabled = false },  -- keep nvim-tree + oil
   },
   keys = {
+    { "<leader>tt", function() Snacks.terminal() end,                      desc = "Toggle terminal (float)" },
+    { "<C-\\>",     function() Snacks.terminal() end,  mode = { "n", "t" }, desc = "Toggle terminal (float)" },
     { "<leader>gz", function() Snacks.zen() end,                            desc = "Zen Mode" },
     { "<leader>gB", function() Snacks.gitbrowse() end,                     desc = "Git Browse URL" },
     { "<leader>N",  function() Snacks.notifier.show_history() end,         desc = "Notification History" },
