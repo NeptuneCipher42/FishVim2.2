@@ -13,7 +13,10 @@ return {
       },
     },
     icons = {
-      kinds = { use_devicons = true },
+      kinds = {
+          file_icon   = function(file, _) return require("nvim-web-devicons").get_icon(file, nil, { default = true }) end,
+          folder_icon = function(_, _) return require("nvim-web-devicons").get_icon("folder") end,
+        },
       ui    = { bar = { separator = "  " } },
     },
     bar = {
