@@ -28,6 +28,29 @@ require("lazy").setup({ { import = "fisher.plugins"}, { import = "fisher.plugins
   change_detection = {
     notify = false,
   },
+  performance = {
+    rtp = {
+      -- Preserve system Neovim paths so bundled parsers (lua, c, vim, markdown)
+      -- remain accessible after lazy resets the runtimepath.
+      -- The exact path is distro-specific; we detect it at runtime.
+      paths = (function()
+        local paths = {}
+        -- Common Linux distro locations for system nvim parsers
+        local candidates = {
+          "/usr/lib/x86_64-linux-gnu/nvim",
+          "/usr/lib/aarch64-linux-gnu/nvim",
+          "/usr/local/lib/nvim",
+          "/usr/lib/nvim",
+        }
+        for _, p in ipairs(candidates) do
+          if vim.uv.fs_stat(p .. "/parser") then
+            table.insert(paths, p)
+          end
+        end
+        return paths
+      end)(),
+    },
+  },
 })
 -- Add lazy.nvim to Neovim's runtime path (`rtp`)
 -- This tells Neovim: "Look inside this folder for plugins and scripts!"

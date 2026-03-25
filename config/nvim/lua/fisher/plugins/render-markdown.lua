@@ -10,6 +10,10 @@ return {
   },
   -- Only load for markdown and AI chat buffers
   ft = { "markdown", "codecompanion", "Avante" },
+  -- Guard: try to load the markdown parser; skip plugin if it fails
+  cond = function()
+    return pcall(vim.treesitter.language.inspect, "markdown")
+  end,
   opts = {
     enabled = true,
 
