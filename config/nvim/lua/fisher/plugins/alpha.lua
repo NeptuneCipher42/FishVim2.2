@@ -66,5 +66,19 @@ return {
     })
 
     vim.cmd([[autocmd FileType alpha setlocal nofoldenable]])
+
+    local default_cursor = vim.opt.guicursor:get()
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "alpha",
+      callback = function()
+        vim.opt.guicursor = "a:noCursor"
+      end,
+    })
+    vim.api.nvim_create_autocmd("BufUnload", {
+      pattern = "<buffer>",
+      callback = function()
+        vim.opt.guicursor = default_cursor
+      end,
+    })
   end,
 }

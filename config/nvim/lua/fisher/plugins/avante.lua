@@ -34,11 +34,15 @@ return {
     provider = "claude",
 
     -- Claude configuration
-    claude = {
-      api_key_name = "ANTHROPIC_API_KEY",
-      model        = "claude-sonnet-4-6-20251101",
-      max_tokens   = 8192,
-      temperature  = 0,
+    providers = {
+      claude = {
+        api_key_name       = "ANTHROPIC_API_KEY",
+        model              = "claude-sonnet-4-6-20251101",
+        extra_request_body = {
+          max_tokens  = 8192,
+          temperature = 0,
+        },
+      },
     },
 
     -- Alternative: uncomment to use GPT-4
