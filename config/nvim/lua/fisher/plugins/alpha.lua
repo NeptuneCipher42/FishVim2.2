@@ -6,11 +6,16 @@ return {
     local alpha = require("alpha")
     local dashboard = require("alpha.themes.dashboard")
 
-    -- Shark two-tone: blue back, white belly, bright white FISHVIM title
-    vim.api.nvim_set_hl(0, "AlphaSharkBack",  { fg = "#1A7FE8" })
-    vim.api.nvim_set_hl(0, "AlphaSharkBelly", { fg = "#C8E8FF" })
-    vim.api.nvim_set_hl(0, "AlphaFishVim",    { fg = "#FFFFFF", bold = true })
-    vim.api.nvim_set_hl(0, "AlphaSubtitle",   { fg = "#4DAAFF" })
+    -- Shark gradient: deep ocean blue (back) → white (belly)
+    -- FISHVIM title mirrors the same gradient top→bottom
+    vim.api.nvim_set_hl(0, "AlphaSharkDeep",  { fg = "#1262B8" })          -- deep blue: dorsal/back
+    vim.api.nvim_set_hl(0, "AlphaSharkMid",   { fg = "#1E88E5" })          -- royal blue: mid-body
+    vim.api.nvim_set_hl(0, "AlphaSharkLight", { fg = "#64B5F6" })          -- sky blue: belly transition
+    vim.api.nvim_set_hl(0, "AlphaSharkBelly", { fg = "#BBDEFB" })          -- icy white-blue: belly
+    vim.api.nvim_set_hl(0, "AlphaFishVimTop", { fg = "#1E88E5", bold = true }) -- title top: royal blue
+    vim.api.nvim_set_hl(0, "AlphaFishVimMid", { fg = "#90CAF9", bold = true }) -- title mid: light blue
+    vim.api.nvim_set_hl(0, "AlphaFishVimBot", { fg = "#FFFFFF", bold = true }) -- title bot: pure white
+    vim.api.nvim_set_hl(0, "AlphaSubtitle",   { fg = "#42A5F5" })
 
     dashboard.section.header.val = {
       "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⣠⣤⣤⠶⠶⠶⠶⠾⠛⠛⠛⠛⠛⠛⠛⢿",
@@ -37,33 +42,34 @@ return {
       "                                                🐟 H A C K E R ' S  V I M  C H O I C E 🐟",
     }
 
-    -- Per-line two-tone highlight: blue back (top) → white belly (bottom)
-    -- Mixed lines split at exact byte offset where FISHVIM ASCII banner begins
+    -- Per-line gradient: deep blue (top) → white belly (bottom)
+    -- FISHVIM title mirrors shark gradient: blue top → white bottom
+    -- Mixed line byte splits: where braille ends and ASCII banner begins
     dashboard.section.header.opts = {
       position = "center",
       hl = {
-        { { "AlphaSharkBack",  0, 500 } },                              -- 1: upper back
-        { { "AlphaSharkBack",  0, 500 } },                              -- 2
-        { { "AlphaSharkBack",  0, 500 } },                              -- 3
-        { { "AlphaSharkBack",  0, 500 } },                              -- 4
-        { { "AlphaSharkBack",  0, 500 } },                              -- 5
-        { { "AlphaSharkBack",  0, 144 }, { "AlphaFishVim", 145, 500 } }, -- 6: mixed
-        { { "AlphaSharkBack",  0, 144 }, { "AlphaFishVim", 145, 500 } }, -- 7: mixed
-        { { "AlphaSharkBack",  0, 166 }, { "AlphaFishVim", 167, 500 } }, -- 8: mixed
-        { { "AlphaSharkBelly", 0, 166 }, { "AlphaFishVim", 167, 500 } }, -- 9: mixed
-        { { "AlphaSharkBelly", 0, 160 }, { "AlphaFishVim", 161, 500 } }, -- 10: mixed
-        { { "AlphaSharkBelly", 0, 144 }, { "AlphaFishVim", 145, 500 } }, -- 11: mixed (╚═╝ row)
-        { { "AlphaSharkBelly", 0, 500 } },                              -- 12: lower belly
-        { { "AlphaSharkBelly", 0, 500 } },                              -- 13
-        { { "AlphaSharkBelly", 0, 500 } },                              -- 14
-        { { "AlphaSharkBelly", 0, 500 } },                              -- 15
-        { { "AlphaSharkBelly", 0, 500 } },                              -- 16
-        { { "AlphaSharkBelly", 0, 500 } },                              -- 17
-        { { "AlphaSharkBelly", 0, 500 } },                              -- 18
-        { { "AlphaSharkBelly", 0, 500 } },                              -- 19
-        { { "AlphaSharkBelly", 0, 500 } },                              -- 20
-        { { "AlphaSharkBelly", 0, 500 } },                              -- 21: tail
-        { { "AlphaSubtitle",   0, 500 } },                              -- 22: subtitle
+        { { "AlphaSharkDeep",  0, 500 } },                                   -- 1: dorsal/back
+        { { "AlphaSharkDeep",  0, 500 } },                                   -- 2
+        { { "AlphaSharkDeep",  0, 500 } },                                   -- 3
+        { { "AlphaSharkMid",   0, 500 } },                                   -- 4
+        { { "AlphaSharkMid",   0, 500 } },                                   -- 5
+        { { "AlphaSharkMid",   0, 144 }, { "AlphaFishVimTop", 145, 500 } },  -- 6: mixed
+        { { "AlphaSharkMid",   0, 144 }, { "AlphaFishVimTop", 145, 500 } },  -- 7: mixed
+        { { "AlphaSharkLight", 0, 166 }, { "AlphaFishVimMid", 167, 500 } },  -- 8: mixed
+        { { "AlphaSharkLight", 0, 166 }, { "AlphaFishVimMid", 167, 500 } },  -- 9: mixed
+        { { "AlphaSharkBelly", 0, 160 }, { "AlphaFishVimBot", 161, 500 } },  -- 10: mixed
+        { { "AlphaSharkBelly", 0, 144 }, { "AlphaFishVimBot", 145, 500 } },  -- 11: mixed (╚═╝ row)
+        { { "AlphaSharkBelly", 0, 500 } },                                   -- 12: belly
+        { { "AlphaSharkBelly", 0, 500 } },                                   -- 13
+        { { "AlphaSharkBelly", 0, 500 } },                                   -- 14
+        { { "AlphaSharkBelly", 0, 500 } },                                   -- 15
+        { { "AlphaSharkBelly", 0, 500 } },                                   -- 16
+        { { "AlphaSharkBelly", 0, 500 } },                                   -- 17
+        { { "AlphaSharkBelly", 0, 500 } },                                   -- 18
+        { { "AlphaSharkBelly", 0, 500 } },                                   -- 19
+        { { "AlphaSharkBelly", 0, 500 } },                                   -- 20
+        { { "AlphaSharkBelly", 0, 500 } },                                   -- 21: tail
+        { { "AlphaSubtitle",   0, 500 } },                                   -- 22: subtitle
       },
     }
 
