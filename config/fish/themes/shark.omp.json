@@ -10,7 +10,7 @@
         {
           "type": "session",
           "style": "powerline",
-          "powerline_symbol": "",
+          "powerline_symbol": "\ue0b0",
           "foreground": "#0B1220",
           "background": "#5FD7FF",
           "template": " 🦈 {{ .UserName }} "
@@ -18,31 +18,37 @@
         {
           "type": "path",
           "style": "powerline",
-          "powerline_symbol": "",
+          "powerline_symbol": "\ue0b0",
           "foreground": "#E6F7FF",
           "background": "#1B4D66",
           "properties": {
             "style": "agnoster",
             "max_depth": 3,
-            "home_icon": "~"
+            "home_icon": "🏠"
           },
-          "template": "  {{ .Path }} "
+          "template": " 📂 {{ .Path }} "
         },
         {
           "type": "git",
           "style": "powerline",
-          "powerline_symbol": "",
+          "powerline_symbol": "\ue0b0",
           "foreground": "#08120A",
           "background": "#8BD450",
-          "template": " {{ .HEAD }}{{ if .Working.Changed }} *{{ end }} "
+          "background_templates": [
+            "{{ if or .Working.Changed .Staging.Changed }}#FF5555{{ end }}"
+          ],
+          "properties": {
+            "fetch_status": false
+          },
+          "template": " 🌿 {{ .HEAD }}{{ if .Working.Changed }} ~{{ end }}{{ if .Staging.Changed }} +{{ end }} "
         },
         {
           "type": "time",
           "style": "powerline",
-          "powerline_symbol": "",
+          "powerline_symbol": "\ue0b0",
           "foreground": "#0B1220",
           "background": "#5FD7FF",
-          "template": "  {{ .CurrentDate | date \"15:04\" }} "
+          "template": " 🕰️ {{ .CurrentDate | date \"15:04\" }} "
         }
       ]
     },
@@ -52,10 +58,13 @@
       "newline": true,
       "segments": [
         {
-          "type": "text",
+          "type": "exit",
           "style": "plain",
           "foreground": "#5FD7FF",
-          "template": "🐟 "
+          "foreground_templates": [
+            "{{ if gt .Code 0 }}#FF5555{{ end }}"
+          ],
+          "template": "{{ if gt .Code 0 }}💀 ❯ {{ else }}🐟 ❯ {{ end }}"
         }
       ]
     }

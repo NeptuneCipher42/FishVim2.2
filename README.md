@@ -530,6 +530,140 @@ Also powered by `mini.ai`: `va)`, `vi"`, `va,`, `vi,`, and many more enhanced te
 
 ---
 
+## Project Structure
+
+```
+FishVim2.2/
+├── config.zip                              # Pre-packed config archive (unzip before install)
+│
+├── config/
+│   ├── dependencies.sh                     # Shared dependency manifest
+│   │
+│   ├── fish/                               # Fish shell config (shark theme + plugins)
+│   │   ├── config.fish                     # Runtime config (sources env, aliases, profile)
+│   │   ├── fish_plugins                    # Fisher plugin list
+│   │   ├── fish_variables                  # Tide + fish variable overrides
+│   │   ├── conf.d/
+│   │   │   ├── aliases.fish                # eza/bat/git/nav aliases
+│   │   │   ├── env.fish                    # EDITOR, PAGER, fzf backend, zoxide init
+│   │   │   ├── active-profile.fish         # Active prompt profile (set by switch-profile)
+│   │   │   ├── done.fish                   # Command completion notifications config
+│   │   │   ├── fzf.fish                    # FZF keybinding config
+│   │   │   ├── sponge.fish                 # History cleanup config
+│   │   │   ├── z.fish                      # Zoxide/z config
+│   │   │   └── _tide_init.fish             # Tide initialization
+│   │   ├── functions/
+│   │   │   ├── fish_greeting.fish          # Kraken + FISHTERM dual ASCII banner
+│   │   │   ├── fish_prompt.fish            # Custom prompt fallback
+│   │   │   ├── fish_mode_prompt.fish       # Vi mode indicator
+│   │   │   ├── fisher.fish                 # Fisher plugin manager
+│   │   │   ├── fzf_configure_bindings.fish # FZF keybinding setup
+│   │   │   ├── tide.fish                   # Tide prompt engine
+│   │   │   └── ...40+ tide/fzf/z internals # Plugin-managed internal functions
+│   │   ├── profiles/
+│   │   │   ├── shark.fish                  # Oh My Posh shark theme (pink/purple powerline)
+│   │   │   ├── clean.fish                  # Minimal Oh My Posh theme
+│   │   │   └── tide.fish                   # Native Tide prompt (lean style)
+│   │   ├── themes/
+│   │   │   ├── shark.omp.json              # Shark powerline prompt (shared with PowerShell)
+│   │   │   └── clean.omp.json              # Minimal cyan prompt
+│   │   ├── banner/
+│   │   │   ├── kraken.txt                  # Octopus ASCII art (Braille unicode)
+│   │   │   ├── fishterm.txt                # FISHTERM block-letter logo
+│   │   │   └── fishterm-shark.txt          # Combined shark variant banner
+│   │   └── completions/
+│   │       ├── fisher.fish                 # Fisher tab completions
+│   │       ├── fzf_configure_bindings.fish # FZF completions
+│   │       └── tide.fish                   # Tide completions
+│   │
+│   ├── neofetch/
+│   │   └── config.conf                     # Neofetch system info display config
+│   │
+│   └── nvim/                               # Neovim configuration (the main event)
+│       ├── init.lua                        # Entry point — loads core + lazy.nvim
+│       ├── lazy-lock.json                  # Plugin version lockfile
+│       └── lua/fisher/
+│           ├── core/
+│           │   ├── init.lua                # Core module loader
+│           │   ├── options.lua             # Editor options (Neovim 0.11+ features enabled)
+│           │   ├── keymaps.lua             # Global keymaps (Space leader, jk, Ctrl+s)
+│           │   └── autocmds.lua            # Auto-commands (format on save, etc.)
+│           ├── lazy.lua                    # lazy.nvim bootstrap + perf opts
+│           └── plugins/
+│               ├── aerial.lua              # Code outline (LSP+TS symbol sidebar)
+│               ├── alpha.lua               # Dashboard (Shark + FishVim startup screen)
+│               ├── auto-sessions.lua       # Session save/restore per cwd
+│               ├── autopairs.lua           # Auto-close brackets
+│               ├── avante.lua              # Cursor-style AI sidebar (one-click diff apply)
+│               ├── blink-cmp.lua           # Completion engine (Rust, replaces nvim-cmp)
+│               ├── bufferline.lua          # Tab bar with slant separators
+│               ├── codecompanion.lua       # AI chat + inline edits (Claude/GPT/Ollama)
+│               ├── colorscheme.lua         # Tokyo Night cyberpunk override
+│               ├── commenting.lua          # Comment.nvim (gc/gb)
+│               ├── copilot.lua             # GitHub Copilot ghost text
+│               ├── dap.lua                 # Debug Adapter Protocol + UI
+│               ├── diffview.lua            # Full diff view + file history
+│               ├── dropbar.lua             # VS Code-style breadcrumb navigation bar
+│               ├── fidget.lua              # LSP progress spinner (bottom-right)
+│               ├── formatting.lua          # conform.nvim format-on-save
+│               ├── git.lua                 # Neogit (Magit-style)
+│               ├── git-conflict.lua        # Merge conflict resolver
+│               ├── gitsigns.lua            # Hunk signs, inline blame, staging
+│               ├── grug-far.lua            # Ripgrep-powered project find & replace
+│               ├── highlight-colors.lua    # Inline hex color preview (#FF79C6 → ▪)
+│               ├── inc-rename.lua          # Live multi-file LSP rename preview
+│               ├── indent-blankline.lua    # Indent guides
+│               ├── kulala.lua              # HTTP/REST/GraphQL client (.http files)
+│               ├── linting.lua             # nvim-lint async per-filetype linting
+│               ├── lsp/
+│               │   ├── config.lua          # LSP setup + LspAttach keymaps (gd, gR, K...)
+│               │   └── mason.lua           # Mason installer (17 language servers)
+│               ├── lualine.lua             # Custom FishVim neon statusline
+│               ├── mcphub.lua              # MCP hub integration
+│               ├── mini.lua                # mini.ai, mini.move, mini.splitjoin, mini.hipatterns
+│               ├── navigation.lua          # flash.nvim (s/S jump) + harpoon2 (bookmarks)
+│               ├── neogit.lua              # Neogit + diffview + git-conflict integration
+│               ├── neotest.lua             # Test runner (Python, Go, Vitest)
+│               ├── noice.lua               # Floating cmdline + LSP progress routing
+│               ├── nvim-tree.lua           # Sidebar file explorer
+│               ├── oil.lua                 # Filesystem-as-buffer editor (- key)
+│               ├── rainbow-delimiters.lua  # Bracket pair colorizing
+│               ├── render-markdown.lua     # In-buffer markdown rendering
+│               ├── rustacean.lua           # rustaceanvim (clippy, macros, runnables, DAP)
+│               ├── smear-cursor.lua        # Animated cursor movement
+│               ├── snacks.lua              # Meta-plugin (indent, scroll, zen, words, animate)
+│               ├── substituion.lua         # cx paste-and-replace motions
+│               ├── surrounds.lua           # ys/cs/ds surround operations
+│               ├── telescope.lua           # Fuzzy finder + fzf-native sorter
+│               ├── test.lua                # Neotest configuration
+│               ├── tiny-inline-diagnostic.lua # Inline diagnostic display
+│               ├── todo.lua                # TODO/FIXME/HACK highlighting
+│               ├── transparent.lua         # Background transparency toggle
+│               ├── treesitter.lua          # Syntax + textobjects + autotag
+│               ├── treewalker.lua          # AST-aware node navigation
+│               ├── trouble.lua             # Diagnostics/qflist panel
+│               ├── ufo.lua                 # LSP/Treesitter code folding with peek
+│               ├── ui.lua                  # dressing.nvim + nvim-notify
+│               ├── vim-maximizer.lua       # Toggle split maximization
+│               ├── which-key.lua           # Keymap hint popup (Space → see all groups)
+│               └── wilder.lua              # Enhanced wildmenu autocomplete
+│
+├── scripts/
+│   └── bootstrap/
+│       ├── linux-ubuntu.sh                 # Ubuntu/WSL — apt + pynvim + config deploy
+│       ├── macos.sh                        # macOS — Homebrew + config deploy
+│       └── windows.ps1                     # Windows — winget + PS7 + Rust + config deploy
+│
+├── docs/
+│   └── plans/
+│       ├── 2026-02-21-fishvim-max-modernization-design.md
+│       └── 2026-02-21-fishvim-max-modernization-implementation.md
+│
+└── test/                                   # Test directory
+```
+
+---
+
 ## Troubleshooting
 
 | Command | Purpose |
