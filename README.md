@@ -55,29 +55,49 @@ Clone the repo, run one bootstrap script for your OS, then open Neovim.
 ### Linux / WSL (Ubuntu)
 
 ```bash
-git clone https://github.com/NeptuneCipher42/FishVim2.0.git
+git clone https://github.com/NeptuneCipher42/FishVim2.2.git
 cd FishVim2.2
 unzip config.zip
 ./scripts/bootstrap/linux-ubuntu.sh
-mv ~/FishVim2.0/config ~/.config
+cp -r config/nvim ~/.config/nvim
 nvim
 ```
 
 ### macOS
 
 ```bash
-git clone https://github.com/NeptuneCipher42/FishVim2.0.git
+git clone https://github.com/NeptuneCipher42/FishVim2.2.git
 cd FishVim2.2
 unzip config.zip
 ./scripts/bootstrap/macos.sh
-mv ~/FishVim2.0/config ~/.config
+cp -r config/nvim ~/.config/nvim
 nvim
 ```
 
-What the bootstrap scripts install:
-- System tools: `git`, `ripgrep`, `fd`, `node`, `python3`, `unzip`, `lazygit`, `go`
+### Windows (PowerShell 7+)
+
+**Step 1 — Install PowerShell 7** (skip if already installed)
+
+```powershell
+winget install --id Microsoft.PowerShell --source winget
+```
+
+Close and reopen using **PowerShell 7** (`pwsh`).
+
+**Step 2 — Clone and bootstrap**
+
+```powershell
+git clone https://github.com/NeptuneCipher42/FishVim2.2.git
+cd FishVim2.2
+pwsh -ExecutionPolicy Bypass -File .\scripts\bootstrap\windows.ps1
+```
+
+The Windows bootstrap installs: `git`, `neovim`, `ripgrep`, `fd`, `node`, `python`, `go`, `lazygit`, `fzf`, `zoxide`, `eza`, `bat`, `oh-my-posh`, and deploys the Neovim config to `%LOCALAPPDATA%\nvim`.
+
+What all bootstrap scripts install:
+- System tools: `git`, `ripgrep`, `fd`, `node`, `python3`, `lazygit`, `go`
 - Fonts: a Nerd Font (required for icons and powerline glyphs)
-- The config into `~/.config/nvim`
+- The Neovim config into the correct platform config directory
 
 ---
 
