@@ -71,7 +71,7 @@
           "foreground_templates": [
             "{{ if gt .Code 0 }}#FF5555{{ end }}"
           ],
-          "template": "{{ if gt .Code 0 }}💀 ❯ {{ else }}🐟 ❯ {{ end }}"
+          "template": "{{ if gt .Code 0 }}💀 > {{ else }}🐟 > {{ end }}"
         }
       ]
     }
